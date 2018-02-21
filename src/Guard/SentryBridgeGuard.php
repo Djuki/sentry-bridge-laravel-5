@@ -1,40 +1,46 @@
 <?php
 namespace Djuki\SentryLaravelBridge\Guard;
 
+use User;
 use Sentry;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class SentryBridgeGuard implements Guard
 {
     public function check()
     {
-        // TODO: Implement check() method.
+        return Sentry::check();
     }
 
     public function guest()
     {
-        // TODO: Implement guest() method.
+        return null;
     }
 
     public function user()
     {
-        // TODO: Implement user() method.
+        return Sentry::getUser();
     }
 
     public function id()
     {
-        // TODO: Implement id() method.
+        return Sentry::getUser() ? Sentry::getUser()->getId() : null;
     }
 
     public function validate(array $credentials = [])
     {
-        // TODO: Implement validate() method.
+        return Sentry::validate($credentials);
     }
 
     public function setUser(Authenticatable $user)
     {
-        // TODO: Implement setUser() method.
+        $id = $user->getAuthIdentifier();
+        if ($user = User::find($id)) {
+            return Sentry::setUser($user);
+        }
+
+        return false;
     }
 
 }
