@@ -1,0 +1,26 @@
+{
+    "name": "djuki/sentry-bridge-laravel-5",
+    "description": "Bridge to use Sentry as a driver for Laravel build in Auth",
+    "authors": [
+        {
+            "name": "Ivan Djurdjevac",
+            "email": "djurdjevac@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "illuminate/support": "5.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src",
+        ],
+        "psr-4": {
+            "Djuki\\SentryLaravelBridge\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
+
+
+
