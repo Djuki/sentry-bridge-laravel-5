@@ -2,8 +2,9 @@
 namespace Djuki\SentryLaravelBridge\Providers;
 
 use User;
-use App\Auth\CustomUserProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Djuki\SentryLaravelBridge\Guard\SentryBridgeGuard;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class SentryAuthBridgeProvider extends ServiceProvider
 {
@@ -15,9 +16,8 @@ class SentryAuthBridgeProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['auth']->extend('sentry',function()
-        {
-            return new SentryUserProvider(new User);
+        Auth::extend('sentry', function ($app, $name, array $config) {
+            return new SentryBridgeGuard(Auth::createUserProvider($config['provider']));
         });
     }
 
