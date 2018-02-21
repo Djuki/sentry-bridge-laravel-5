@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Djuki\\SentryLaravelBridge\\SentryAuthBridgeProvider"
+                "Djuki\\SentryLaravelBridge\\Providers\\SentryAuthBridgeProvider"
             ]
         }
     },
