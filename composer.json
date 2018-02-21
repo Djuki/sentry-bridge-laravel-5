@@ -19,6 +19,13 @@
             "Djuki\\SentryLaravelBridge\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Djuki\\SentryLaravelBridge\\SentryAuthBridgeProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable"
 }
 
