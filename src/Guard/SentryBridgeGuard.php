@@ -43,4 +43,21 @@ class SentryBridgeGuard implements Guard
         return false;
     }
 
+    public function getProvider()
+    {
+        return auth();
+    }
+
+    public function retrieveById($id)
+    {
+        return User::find($id);
+    }
+
+    public function login($user)
+    {
+        //auth()->setUser($user);
+        //auth()->login($user);
+        return Sentry::loginAndRemember($user);
+    }
+
 }
