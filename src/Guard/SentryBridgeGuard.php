@@ -60,4 +60,9 @@ class SentryBridgeGuard implements Guard
         return Sentry::loginAndRemember($user);
     }
 
+    public function hasUser()
+    {
+        auth()->user() ? true : false;
+    }
+
 }
